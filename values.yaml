@@ -1,0 +1,21 @@
+replicaCount: 1
+image:
+  repository: public.ecr.aws/b0s3f4q0/my-app 
+  tag: "latest"
+service:
+  port: 5000
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+ingress:
+  enabled: false
+  path: /
